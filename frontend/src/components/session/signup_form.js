@@ -18,7 +18,13 @@ class SignupForm extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.signedIn === true) {
-            this.props.history.push('/login');
+            let user = {
+                email: this.state.email,
+                handle: this.state.handle,
+                password: this.state.password,
+                password2: this.state.password2
+            };
+            this.props.login(user);
         }
 
         this.setState({ errors: nextProps.errors })
